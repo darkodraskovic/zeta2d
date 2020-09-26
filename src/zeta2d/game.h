@@ -9,7 +9,7 @@ namespace Zeta2D {
     public:
         virtual void Init() {};
         virtual void Input(const SDL_Event* event) {};
-        virtual void Update(float deltaTime) {};
+        virtual void Update(float deltaTime) = 0;
         virtual void Render(SDL_Renderer* renderer) {};
         virtual void Destroy() {};
     };

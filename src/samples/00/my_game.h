@@ -11,11 +11,11 @@ vec2 projectilePos{0, 0};
 vec2 projectileVel{100, 100};
 
 class MyGame : public Game {
-    virtual void Update(float deltaTime) {
+    virtual void Update(float deltaTime) override {
         projectilePos += projectileVel * deltaTime;
     };
     
-    virtual void Render(SDL_Renderer* renderer) {
+    virtual void Render(SDL_Renderer* renderer) override {
         SDL_Rect projectile {
             (int)projectilePos.x,
             (int)projectilePos.y,

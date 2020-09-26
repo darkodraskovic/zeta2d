@@ -9,6 +9,8 @@ set(ZETA2D_SRC src/zeta2d)
 
 add_library(zeta2d
   "${ZETA2D_SRC}/app.cpp"
+  "${ZETA2D_SRC}/entity/entity.cpp"
+  "${ZETA2D_SRC}/entity/entity_manager.cpp"
   )
 target_include_directories(zeta2d PUBLIC src)
 target_link_libraries(zeta2d PUBLIC
