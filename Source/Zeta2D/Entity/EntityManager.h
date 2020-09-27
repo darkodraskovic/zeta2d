@@ -11,7 +11,7 @@ namespace Zeta2D {
     class EntityManager {
     public:
         void Update(float deltaTime);
-        void Render(SDL_Renderer* renderer);
+        void Render();
         
         Entity& AddEntity(std::string name);
         std::vector<Entity*> GetEntities();

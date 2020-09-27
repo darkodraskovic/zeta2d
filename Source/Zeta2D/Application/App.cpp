@@ -5,10 +5,12 @@
 #include "Consts.h"
 #include "App.h"
 #include "Game.h"
-#include "Entity/Entity.h"
+#include "../Entity/Entity.h"
 
 using namespace glm;
 using namespace Zeta2D;
+
+SDL_Renderer *App::renderer_;
 
 App::App(Game* game) : game_(game){
     game_->app_ = this;
@@ -20,7 +22,7 @@ App::~App() {}
 bool App::GetRunning() const { return running_; }
 
 EntityManager& App::GetManager() {
-    return manager_;
+    return entityManager_;
 }
 
 void App::Run() {
@@ -85,15 +87,15 @@ void App::Update() {
     deltaTime = deltaTime < DELTA_TIME_MAX ? deltaTime : DELTA_TIME_MAX;
 
     game_->Update(deltaTime);
-    manager_.Update(deltaTime);
+    entityManager_.Update(deltaTime);
 }
 
 void App::Render() {
     SDL_SetRenderDrawColor(renderer_, 21, 21, 21, 255);
     SDL_RenderClear(renderer_);
 
-    game_->Render(renderer_);
-    manager_.Render(renderer_);
+    game_->Render();
+    entityManager_.Render();
     
     SDL_RenderPresent(renderer_);
 }

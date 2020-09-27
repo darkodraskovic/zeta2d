@@ -1,7 +1,9 @@
 #ifndef TRANSFORM_COMPONENT_H
 #define TRANSFORM_COMPONENT_H
 
+#include <SDL2/SDL_render.h>
 #include <glm/glm.hpp>
+#include "../Application/App.h"
 #include "Component.h"
 
 using namespace glm;
@@ -13,13 +15,13 @@ namespace Zeta2D {
         virtual void Update(float deltaTime) override {
             position_ += velocity_ * deltaTime;
         }
-        virtual void Render(SDL_Renderer* renderer) override {
+        virtual void Render() override {
             SDL_Rect rect{
                 (int)position_.x, (int)position_.y,
                 size_.x, size_.y,
             };
-            SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-            SDL_RenderFillRect(renderer, &rect);
+            SDL_SetRenderDrawColor(App::renderer_, 255, 255, 255, 255);
+            SDL_RenderFillRect(App::renderer_, &rect);
         }        
         
         vec2 position_;

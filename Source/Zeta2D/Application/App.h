@@ -5,7 +5,7 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
 
-#include "Entity/EntityManager.h"
+#include "../Entity/EntityManager.h"
 
 namespace Zeta2D {
     class Game;
@@ -23,11 +23,11 @@ namespace Zeta2D {
         void Destroy();
         EntityManager& GetManager();
         
+        static SDL_Renderer* renderer_;
     private:
-        EntityManager manager_;
+        EntityManager entityManager_;
         bool running_;
         SDL_Window* window_;
-        SDL_Renderer* renderer_;
         Game* game_;
         int prevFrameTime;
     };

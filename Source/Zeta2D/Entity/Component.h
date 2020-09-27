@@ -10,7 +10,7 @@ namespace Zeta2D {
     public:
         virtual void Init() {};
         virtual void Update(float deltaTime) {};
-        virtual void Render(SDL_Renderer* renderer) {};
+        virtual void Render() {};
         virtual void Destroy() {}
         Entity& GetOwner() {return *owner;}
         

@@ -17,7 +17,7 @@ namespace Zeta2D {
     public:
         Entity(EntityManager* manager);
         virtual void Update(float deltaTime);
-        virtual void Render(SDL_Renderer* renderer);
+        virtual void Render();
         virtual void Destroy();
         bool GetActive() const;
         vector<Component*> GetComponents();

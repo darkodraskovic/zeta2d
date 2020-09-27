@@ -3,8 +3,8 @@
 
 #include <glm/fwd.hpp>
 #include <glm/gtc/random.hpp>
-#include "Zeta2D/Game.h"
-#include "Zeta2D/Consts.h"
+#include "Zeta2D/Application/Game.h"
+#include "Zeta2D/Application/Consts.h"
 #include "Zeta2D/Entity/Entity.h"
 #include "Zeta2D/Entity/TransformComponent.h"
 

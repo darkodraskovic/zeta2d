@@ -8,9 +8,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(ZETA2D_SRC Source/Zeta2D)
 
 add_library(zeta2d
-  "${ZETA2D_SRC}/App.cpp"
+  "${ZETA2D_SRC}/Application/App.cpp"
   "${ZETA2D_SRC}/Entity/Entity.cpp"
   "${ZETA2D_SRC}/Entity/EntityManager.cpp"
+  "${ZETA2D_SRC}/Graphics/TextureManager.cpp"
   )
 target_include_directories(zeta2d PUBLIC Source)
 target_link_libraries(zeta2d PUBLIC

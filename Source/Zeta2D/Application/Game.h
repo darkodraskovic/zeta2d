@@ -11,7 +11,7 @@ namespace Zeta2D {
         virtual void Init() {};
         virtual void Input(const SDL_Event* event) {}
         virtual void Update(float deltaTime) {};
-        virtual void Render(SDL_Renderer* renderer) {}
+        virtual void Render() {}
         virtual void Destroy() {}
         
         App& GetApp() { return *app_;}

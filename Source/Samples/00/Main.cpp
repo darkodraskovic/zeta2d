@@ -1,6 +1,6 @@
 #include<iostream>
 
-#include "Zeta2D/Consts.h"
+#include "Zeta2D/Application/Consts.h"
 #include "MyGame.h"
 
 using namespace Zeta2D;
