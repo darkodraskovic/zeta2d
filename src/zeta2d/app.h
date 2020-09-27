@@ -5,9 +5,10 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
 
-#include "game.h"
+#include "zeta2d/entity/entity_manager.h"
 
 namespace Zeta2D {
+    class Game;
     
     class App {
     public:
@@ -20,8 +21,10 @@ namespace Zeta2D {
         void Update();
         void Render();
         void Destroy();
+        EntityManager& GetManager();
         
     private:
+        EntityManager manager_;
         bool running_;
         SDL_Window* window_;
         SDL_Renderer* renderer_;

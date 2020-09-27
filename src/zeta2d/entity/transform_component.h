@@ -25,7 +25,7 @@ namespace Zeta2D {
         vec2 position_;
         float rotation_ = 0;
         vec2 scale_;
-        ivec2 size_;
+        ivec2 size_ = {4, 4};
 
         vec2 velocity_;
         

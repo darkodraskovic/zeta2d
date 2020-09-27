@@ -18,7 +18,6 @@ target_link_libraries(zeta2d PUBLIC
 
 add_executable(00
   src/samples/00/main.cpp
-  # src/samples/00/app.cpp
   )
 target_include_directories(00 PUBLIC src/samples/00)
 target_link_libraries(00 PRIVATE zeta2d)

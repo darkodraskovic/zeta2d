@@ -4,18 +4,24 @@
 
 #include "consts.h"
 #include "app.h"
+#include "game.h"
+#include "entity/entity.h"
 
 using namespace glm;
 using namespace Zeta2D;
 
-App::App(Game* game) {
-    game_ = game;
+App::App(Game* game) : game_(game){
+    game_->app_ = this;
     running_ = false;
 }
 
 App::~App() {}
 
 bool App::GetRunning() const { return running_; }
+
+EntityManager& App::GetManager() {
+    return manager_;
+}
 
 void App::Run() {
     while (GetRunning()) {
@@ -37,7 +43,7 @@ void App::Init(int width, int height) {
         return;
     }
 
-    renderer_ = SDL_CreateRenderer(window_, -1, 0); // -1 = default
+    renderer_ = SDL_CreateRenderer(window_, -1, 0); // -1 = default display
     if(!renderer_) {
         std::cerr << "ERR init renderer" << std::endl;
         return;
@@ -46,7 +52,7 @@ void App::Init(int width, int height) {
     running_ = true;
 
     game_->Init();
-    
+
     return;
 }
 
@@ -79,6 +85,7 @@ void App::Update() {
     deltaTime = deltaTime < DELTA_TIME_MAX ? deltaTime : DELTA_TIME_MAX;
 
     game_->Update(deltaTime);
+    manager_.Update(deltaTime);
 }
 
 void App::Render() {
@@ -86,6 +93,7 @@ void App::Render() {
     SDL_RenderClear(renderer_);
 
     game_->Render(renderer_);
+    manager_.Render(renderer_);
     
     SDL_RenderPresent(renderer_);
 }

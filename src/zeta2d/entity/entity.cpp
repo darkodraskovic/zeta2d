@@ -1,9 +1,10 @@
+#include <iostream>
 #include "entity.h"
 #include "component.h"
 
 using namespace Zeta2D;
 
-Entity::Entity(EntityManager& manager) : manager_(manager) {
+Entity::Entity(EntityManager* manager) : manager_(manager) {
     active_ = true;
 }
 
@@ -21,6 +22,10 @@ void Entity::Render(SDL_Renderer *renderer) {
 
 bool Entity::GetActive() const {
     return active_;
+}
+
+vector<Component*> Entity::GetComponents() {
+    return components_;
 }
 
 void Entity::Destroy() {

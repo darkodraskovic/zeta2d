@@ -1,28 +1,23 @@
 #ifndef MY_GAME_H
 #define MY_GAME_H
 
-#include "glm/glm.hpp"
-#include "zeta2d/app.h"
+#include "zeta2d/game.h"
+#include "zeta2d/entity/entity.h"
+#include "zeta2d/entity/transform_component.h"
 
 using namespace glm;
 using namespace Zeta2D;
 
-vec2 projectilePos{0, 0};
-vec2 projectileVel{100, 100};
-
 class MyGame : public Game {
-    virtual void Update(float deltaTime) override {
-        projectilePos += projectileVel * deltaTime;
-    };
+public:
+    virtual void Init() override {
+        Entity& e = GetApp().GetManager().AddEntity("zzz");
+        TransformComponent& tc = e.AddComponent<TransformComponent>();
+        tc.velocity_ = {100, 50};
+    }
     
-    virtual void Render(SDL_Renderer* renderer) override {
-        SDL_Rect projectile {
-            (int)projectilePos.x,
-            (int)projectilePos.y,
-            10, 10
-        };
-        SDL_SetRenderDrawColor(renderer, 255, 0, 255, 255);
-        SDL_RenderFillRect(renderer, &projectile);
+    virtual void Update(float deltaTime) override {
+
     };
 };
 

@@ -10,15 +10,15 @@ namespace Zeta2D {
     
     class EntityManager {
     public:
-        virtual void Update(float deltaTime);
-        virtual void Render(SDL_Renderer* renderer);
+        void Update(float deltaTime);
+        void Render(SDL_Renderer* renderer);
         
         Entity& AddEntity(std::string name);
-        std::vector<Entity*> GetEntities() const;
+        std::vector<Entity*> GetEntities();
         void Clear();
 
     private:
-        std::vector<Entity* > entities_;
+        std::vector<Entity*> entities_;
     };
 
 }  // Zeta2D
