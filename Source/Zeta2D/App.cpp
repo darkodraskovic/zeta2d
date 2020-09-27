@@ -2,10 +2,10 @@
 #include <SDL2/SDL.h>
 #include <glm/glm.hpp>
 
-#include "consts.h"
-#include "app.h"
-#include "game.h"
-#include "entity/entity.h"
+#include "Consts.h"
+#include "App.h"
+#include "Game.h"
+#include "Entity/Entity.h"
 
 using namespace glm;
 using namespace Zeta2D;

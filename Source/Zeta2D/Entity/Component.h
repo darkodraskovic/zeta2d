@@ -2,7 +2,7 @@
 #define COMPONENT_H
 
 #include <SDL2/SDL.h>
-#include "entity.h"
+#include "Entity.h"
 
 namespace Zeta2D {
 

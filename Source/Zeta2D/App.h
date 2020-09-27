@@ -5,7 +5,7 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
 
-#include "zeta2d/entity/entity_manager.h"
+#include "Entity/EntityManager.h"
 
 namespace Zeta2D {
     class Game;

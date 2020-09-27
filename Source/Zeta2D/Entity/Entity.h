@@ -6,7 +6,7 @@
 #include <string>
 #include <SDL2/SDL.h>
 
-#include "entity_manager.h"
+#include "EntityManager.h"
 
 using namespace std;
 

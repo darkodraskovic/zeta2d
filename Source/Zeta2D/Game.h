@@ -2,7 +2,7 @@
 #define GAME_H
 
 #include <SDL2/SDL.h>
-#include "app.h"
+#include "App.h"
 
 namespace Zeta2D {
 

@@ -1,6 +1,6 @@
 #include <iostream>
-#include "entity_manager.h"
-#include "entity.h"
+#include "EntityManager.h"
+#include "Entity.h"
 
 using namespace Zeta2D;
 

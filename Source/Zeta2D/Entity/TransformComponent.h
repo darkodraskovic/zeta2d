@@ -2,7 +2,7 @@
 #define TRANSFORM_COMPONENT_H
 
 #include <glm/glm.hpp>
-#include "component.h"
+#include "Component.h"
 
 using namespace glm;
 
