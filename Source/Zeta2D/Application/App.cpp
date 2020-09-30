@@ -6,11 +6,13 @@
 #include "App.h"
 #include "Game.h"
 #include "../Entity/Entity.h"
+#include "../Asset/AssetManager.h"
 
 using namespace glm;
 using namespace Zeta2D;
 
 SDL_Renderer *App::renderer_;
+AssetManager *App::assetManager_ = new AssetManager();
 
 App::App(Game* game) : game_(game){
     game_->app_ = this;

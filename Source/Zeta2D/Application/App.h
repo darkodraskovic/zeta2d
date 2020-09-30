@@ -2,12 +2,11 @@
 #define APP_H
 
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_ttf.h>
-
 #include "../Entity/EntityManager.h"
 
 namespace Zeta2D {
+    class EntityManager;
+    class AssetManager;
     class Game;
     
     class App {
@@ -24,6 +23,8 @@ namespace Zeta2D {
         EntityManager& GetManager();
         
         static SDL_Renderer* renderer_;
+        static AssetManager* assetManager_;
+        
     private:
         EntityManager entityManager_;
         bool running_;

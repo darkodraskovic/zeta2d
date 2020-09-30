@@ -5,13 +5,13 @@
 using namespace Zeta2D;
 
 void EntityManager::Update(float deltaTime) {
-    for (auto& entity: entities_) {
+    for (Entity* entity: entities_) {
         entity->Update(deltaTime);
     }
 }
 
 void EntityManager::Render() {
-    for (auto& entity: entities_) {
+    for (Entity* entity: entities_) {
         entity->Render();
     }    
 }

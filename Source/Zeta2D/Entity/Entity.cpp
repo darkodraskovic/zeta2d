@@ -9,13 +9,13 @@ Entity::Entity(EntityManager* manager) : manager_(manager) {
 }
 
 void Entity::Update(float deltaTime) {
-    for (auto& component : components_) {
+    for (Component* component : components_) {
         component->Update(deltaTime);
     }
 }
 
 void Entity::Render() {
-    for (auto& component : components_) {
+    for (Component* component : components_) {
         component->Render();
     }
 }

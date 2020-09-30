@@ -9,9 +9,10 @@ set(ZETA2D_SRC Source/Zeta2D)
 
 add_library(zeta2d
   "${ZETA2D_SRC}/Application/App.cpp"
+  "${ZETA2D_SRC}/Asset/AssetManager.cpp"
   "${ZETA2D_SRC}/Entity/Entity.cpp"
   "${ZETA2D_SRC}/Entity/EntityManager.cpp"
-  "${ZETA2D_SRC}/Graphics/TextureManager.cpp"
+  "${ZETA2D_SRC}/Graphics/Texture.cpp"
   )
 target_include_directories(zeta2d PUBLIC Source)
 target_link_libraries(zeta2d PUBLIC

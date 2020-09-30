@@ -2,8 +2,10 @@
 #define ENTITY_H
 
 #include <iostream>
+#include <typeinfo>
 #include <vector>
 #include <string>
+#include <map>
 #include <SDL2/SDL.h>
 
 #include "EntityManager.h"
@@ -28,13 +30,25 @@ namespace Zeta2D {
             component->owner = this;
             components_.push_back(component);
             component->Init();
+            typeMap_[&typeid(*component)] = component;
             return *component;
         }
+
+        template<typename T>
+        T* GetComponent() {
+            return static_cast<T*>(typeMap_[&typeid(T)]);
+        }
+
+        template<typename T>
+        bool HasComponent() const {
+            return typeMap_.find(&typeid(T)) != typeMap_.end();
+        };
         
         string name_;
         
     private:
         vector<Component*> components_;
+        map<const type_info*, Component*> typeMap_;
         EntityManager* manager_;
         bool active_;
     };

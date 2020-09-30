@@ -12,10 +12,9 @@ namespace Zeta2D {
         virtual void Update(float deltaTime) {};
         virtual void Render() {};
         virtual void Destroy() {}
-        Entity& GetOwner() {return *owner;}
+        Entity* owner;
         
     private:
-        Entity* owner;
         friend class Entity;
     };    
 

@@ -11,13 +11,16 @@ namespace Zeta2D {
 
     class AssetManager {
     public:
-        AssetManager(EntityManager* manager_);
-        ~AssetManager();
+        AssetManager() {};
         void Clear();
+        void AddTexture(string id, const char* fileName);
+        SDL_Texture* GetTexture(string id);
         
     private:
+        SDL_Texture* LoadTexture(const char* fileName);
+
         EntityManager* entityManager_;
-        map<string, SDL_Texture*> textures;
+        map<string, SDL_Texture*> textures_;
     };
 
 }  // Zeta2D
