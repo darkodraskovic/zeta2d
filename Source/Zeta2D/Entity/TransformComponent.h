@@ -12,25 +12,11 @@ namespace Zeta2D {
 
     class TransformComponent : public Component {
     public:
-        virtual void Update(float deltaTime) override {
-            position_ += velocity_ * deltaTime;
-        }
-        // virtual void Render() override {
-        //     SDL_Rect rect{
-        //         (int)position_.x, (int)position_.y,
-        //         size_.x, size_.y,
-        //     };
-        //     SDL_SetRenderDrawColor(App::renderer_, 255, 255, 255, 255);
-        //     SDL_RenderFillRect(App::renderer_, &rect);
-        // }        
-        
         vec2 position_;
         float rotation_ = 0;
         vec2 scale_ = {1, 1};
         ivec2 size_ = {32, 32};
 
-        vec2 velocity_;
-        
     private:
     };
 

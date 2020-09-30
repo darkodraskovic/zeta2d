@@ -5,10 +5,9 @@
 #include "../Entity/EntityManager.h"
 
 namespace Zeta2D {
-    class EntityManager;
     class AssetManager;
     class Game;
-    
+
     class App {
     public:
         App(Game* game);
@@ -21,10 +20,10 @@ namespace Zeta2D {
         void Render();
         void Destroy();
         EntityManager& GetManager();
-        
+
         static SDL_Renderer* renderer_;
         static AssetManager* assetManager_;
-        
+
     private:
         EntityManager entityManager_;
         bool running_;

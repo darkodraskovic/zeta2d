@@ -7,14 +7,14 @@
 
 namespace Zeta2D {
     class Entity;
-    
+
     class EntityManager {
     public:
         void Update(float deltaTime);
         void Render();
-        
+
         Entity& AddEntity(std::string name);
-        std::vector<Entity*> GetEntities();
+        std::vector<Entity*>& GetEntities();
         void Clear();
 
     private:

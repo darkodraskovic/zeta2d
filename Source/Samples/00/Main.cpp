@@ -12,6 +12,6 @@ int main(int argc, char *argv[]){
     app->Init(WINDOW_WIDTH, WINDOW_HEIGHT);
     app->Run();
     app->Destroy();
-    
+
     return 0;
 }

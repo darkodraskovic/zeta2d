@@ -15,7 +15,7 @@ namespace Zeta2D {
         void Clear();
         void AddTexture(string id, const char* fileName);
         SDL_Texture* GetTexture(string id);
-        
+
     private:
         SDL_Texture* LoadTexture(const char* fileName);
 

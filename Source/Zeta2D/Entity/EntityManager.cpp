@@ -13,7 +13,7 @@ void EntityManager::Update(float deltaTime) {
 void EntityManager::Render() {
     for (Entity* entity: entities_) {
         entity->Render();
-    }    
+    }
 }
 
 Entity& EntityManager::AddEntity(std::string name) {
@@ -23,7 +23,7 @@ Entity& EntityManager::AddEntity(std::string name) {
     return *entity;
 }
 
-std::vector<Entity*> EntityManager::GetEntities() {
+std::vector<Entity*>& EntityManager::GetEntities() {
     return entities_;
 }
 

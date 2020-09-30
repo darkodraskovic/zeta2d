@@ -24,7 +24,7 @@ bool Entity::GetActive() const {
     return active_;
 }
 
-vector<Component*> Entity::GetComponents() {
+vector<Component*>& Entity::GetComponents() {
     return components_;
 }
 

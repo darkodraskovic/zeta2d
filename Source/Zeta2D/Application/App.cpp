@@ -11,7 +11,7 @@
 using namespace glm;
 using namespace Zeta2D;
 
-SDL_Renderer *App::renderer_;
+SDL_Renderer *App::renderer_ = nullptr;
 AssetManager *App::assetManager_ = new AssetManager();
 
 App::App(Game* game) : game_(game){
@@ -68,7 +68,7 @@ void App::Input() {
     case SDL_QUIT:
         running_ = false;
         break;
-    case SDL_KEYDOWN: 
+    case SDL_KEYDOWN:
         if (event.key.keysym.sym == SDLK_ESCAPE) {
             running_ = false;
         }
@@ -98,13 +98,13 @@ void App::Render() {
 
     game_->Render();
     entityManager_.Render();
-    
+
     SDL_RenderPresent(renderer_);
 }
 
 void App::Destroy() {
     game_->Destroy();
-    
+
     SDL_DestroyRenderer(renderer_);
     SDL_DestroyWindow(window_);
     SDL_Quit();

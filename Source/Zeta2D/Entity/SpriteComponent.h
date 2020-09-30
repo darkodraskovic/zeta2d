@@ -31,18 +31,18 @@ namespace Zeta2D {
         virtual void Update(float deltaTime) override {
             // transform_->rotation_ += 0.1;
         };
-        
+
         virtual void Render() override {
             dstRect_.x = (int)transform_->position_.x;
-            dstRect_.y = (int)transform_->position_.y;            
+            dstRect_.y = (int)transform_->position_.y;
             dstRect_.w = transform_->size_.x * transform_->scale_.x;
-            dstRect_.h = transform_->size_.y * transform_->scale_.y;            
+            dstRect_.h = transform_->size_.y * transform_->scale_.y;
             Texture::Draw(texture_, &srcRect_, &dstRect_,
                           transform_->rotation_, spriteFlip);
         };
-        
+
         SDL_RendererFlip spriteFlip = SDL_FLIP_NONE;
-        
+
     private:
         TransformComponent* transform_;
         SDL_Texture* texture_;

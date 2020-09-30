@@ -10,6 +10,7 @@
 #include "Zeta2D/Entity/Entity.h"
 #include "Zeta2D/Entity/TransformComponent.h"
 #include "Zeta2D/Entity/SpriteComponent.h"
+#include "Zeta2D/Entity/PhysicsComponent.h"
 
 using namespace glm;
 using namespace Zeta2D;
@@ -19,27 +20,21 @@ public:
     virtual void Init() override {
         string textureFilePath = "../assets/images/tank-big-right.png";
         App::assetManager_->AddTexture("tank-big-right", textureFilePath.c_str());
-        
-        for (int i = 0; i < 4; ++i)
+
+        for (int i = 0; i < 10; ++i)
         {
             Entity& e = GetApp().GetManager().AddEntity("tank");
             TransformComponent& tc = e.AddComponent<TransformComponent>();
             tc.size_ = {64, 64};
             tc.position_ = linearRand(vec2{0,0}, vec2{WINDOW_WIDTH, WINDOW_HEIGHT});
-            tc.velocity_ = linearRand(vec2{-30,-30}, vec2{30, 30});
+            PhysicsComponent& pc = e.AddComponent<PhysicsComponent>();
+            pc.velocity_ = linearRand(vec2{-50,-50}, vec2{50, 50});
+            pc.aVelocity_ = linearRand(-120, 120);
             SpriteComponent& sc = e.AddComponent<SpriteComponent>("tank-big-right");
         }
-        // for (int i = 0; i < 1000; ++i)
-        // {
-        //     Entity& e = GetApp().GetManager().AddEntity("zzz");
-        //     TransformComponent& tc = e.AddComponent<TransformComponent>();
-        //     tc.position_ = linearRand(vec2{0,0}, vec2{WINDOW_WIDTH, WINDOW_HEIGHT});
-        //     tc.velocity_ = linearRand(vec2{-30,-30}, vec2{30, 30});
-        // }
     }
-    
-    virtual void Update(float deltaTime) override {
 
+    virtual void Update(float deltaTime) override {
     };
 };
 

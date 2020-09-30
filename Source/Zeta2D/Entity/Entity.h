@@ -14,7 +14,7 @@ using namespace std;
 
 namespace Zeta2D {
     class Component;
-    
+
     class Entity {
     public:
         Entity(EntityManager* manager);
@@ -22,7 +22,7 @@ namespace Zeta2D {
         virtual void Render();
         virtual void Destroy();
         bool GetActive() const;
-        vector<Component*> GetComponents();
+        vector<Component*>& GetComponents();
 
         template<typename T, typename... TArgs>
         T& AddComponent(TArgs&&... args) {
@@ -43,9 +43,9 @@ namespace Zeta2D {
         bool HasComponent() const {
             return typeMap_.find(&typeid(T)) != typeMap_.end();
         };
-        
+
         string name_;
-        
+
     private:
         vector<Component*> components_;
         map<const type_info*, Component*> typeMap_;

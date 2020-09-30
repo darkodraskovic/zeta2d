@@ -13,13 +13,13 @@ namespace Zeta2D {
         virtual void Update(float deltaTime) {};
         virtual void Render() {}
         virtual void Destroy() {}
-        
+
         App& GetApp() { return *app_;}
     private:
         App* app_;
         friend class App;
     };
-    
+
 }  // Namespace
 
 #endif /* GAME_H */

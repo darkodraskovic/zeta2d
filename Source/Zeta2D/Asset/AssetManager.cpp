@@ -12,7 +12,7 @@ SDL_Texture* AssetManager::LoadTexture(const char *fileName) {
     SDL_Surface* surface = IMG_Load(fileName);
     SDL_Texture* texture = SDL_CreateTextureFromSurface(App::renderer_, surface);
     SDL_FreeSurface(surface);
-    return texture; 
+    return texture;
 }
 
 void AssetManager::AddTexture(string id, const char* fileName) {
@@ -22,4 +22,3 @@ void AssetManager::AddTexture(string id, const char* fileName) {
 SDL_Texture* AssetManager::GetTexture(string id) {
     return textures_[id];
 }
-

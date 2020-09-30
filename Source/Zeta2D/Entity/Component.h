@@ -13,10 +13,10 @@ namespace Zeta2D {
         virtual void Render() {};
         virtual void Destroy() {}
         Entity* owner;
-        
+
     private:
         friend class Entity;
-    };    
+    };
 
 }  // Zeta2D
 

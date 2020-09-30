@@ -5,7 +5,7 @@
 #include <SDL2/SDL_render.h>
 
 namespace Zeta2D {
-    
+
     class Texture {
     public:
         static void Draw(
