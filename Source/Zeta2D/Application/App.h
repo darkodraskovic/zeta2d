@@ -5,6 +5,19 @@
 #include <typeinfo>
 #include <SDL2/SDL.h>
 
+#include "Manager.h"
+
+#define CONTEXT(type)                                                          \
+public:                                                                        \
+  type(App *app) : app_(app) {}                                                \
+  template <typename T> T *GetManager() {                                      \
+    TypeMap &typeMap = app_->GetTypeMap();                                     \
+    return static_cast<T *>(typeMap[&typeid(T)]);                              \
+  }                                                                            \
+                                                                               \
+protected:                                                                     \
+  App *app_;
+
 using namespace std;
 
 namespace Zeta2D {
@@ -12,7 +25,9 @@ namespace Zeta2D {
     class EntityManager;
     class AssetManager;
     class Game;
-        
+
+    typedef map<const type_info*, Manager*> TypeMap;
+
     class App {
     public:
         App() {};
@@ -24,11 +39,13 @@ namespace Zeta2D {
         void Update();
         void Render();
         void Destroy();
+        TypeMap& GetTypeMap() {
+            return typeMap_;
+        };
 
         template <typename T>
         T* AddManager() {
-            T* manager(new T());
-            manager->app_ = this;
+            T* manager(new T(this));
             typeMap_[&typeid(T)] = manager;
             return manager;
         }
@@ -41,10 +58,10 @@ namespace Zeta2D {
         static SDL_Renderer* renderer_;
         
     private:
+        TypeMap typeMap_;
         AssetManager* assetManager_;
         EntityManager* entityManager_;
         
-        map<const type_info*, Manager*> typeMap_;
         bool running_ = false;
         SDL_Window* window_;
         Game* game_;

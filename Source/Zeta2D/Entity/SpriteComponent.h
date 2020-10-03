@@ -42,7 +42,7 @@ namespace Zeta2D {
         };
 
         void SetTexture(const string& id) {
-            texture_ = owner->GetApp()->GetManager<AssetManager>()->GetTexture(id);
+            texture_ = owner->GetManager<AssetManager>()->GetTexture(id);
         }
 
         SDL_RendererFlip spriteFlip = SDL_FLIP_NONE;

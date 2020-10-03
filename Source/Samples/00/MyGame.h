@@ -39,7 +39,6 @@ public:
     };
 
     void CreateTank(const vec2& pos, const vec2& vel, float aVel) {
-
         Entity* e = app_->GetManager<EntityManager>()->AddEntity("tank");
         TransformComponent* tc = e->AddComponent<TransformComponent>();
         tc->position_ = pos;

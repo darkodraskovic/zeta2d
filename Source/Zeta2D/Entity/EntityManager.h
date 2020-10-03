@@ -5,12 +5,14 @@
 #include <vector>
 #include <SDL2/SDL.h>
 
+#include "../Application/App.h"
 #include "../Application/Manager.h"
 
 namespace Zeta2D {
     class Entity;
 
     class EntityManager : public Manager {
+        CONTEXT(EntityManager)
     public:
         void Update(float deltaTime);
         void Render();

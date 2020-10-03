@@ -17,7 +17,7 @@ void EntityManager::Render() {
 }
 
 Entity* EntityManager::AddEntity(std::string name) {
-    Entity* entity = new Entity(this);
+    Entity* entity = new Entity(app_);
     entity->name_ = name;
     entity->app_ = this->app_;
     entities_.emplace_back(entity);

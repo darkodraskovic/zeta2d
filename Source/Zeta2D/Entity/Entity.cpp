@@ -4,10 +4,6 @@
 
 using namespace Zeta2D;
 
-Entity::Entity(EntityManager* manager) : manager_(manager) {
-    active_ = true;
-}
-
 void Entity::Update(float deltaTime) {
     for (Component* component : components_) {
         component->Update(deltaTime);

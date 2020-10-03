@@ -8,17 +8,16 @@
 #include <map>
 #include <SDL2/SDL.h>
 
+#include "../Application/App.h"
 #include "EntityManager.h"
 
 using namespace std;
 
 namespace Zeta2D {
     class Component;
-    class App;
-
     class Entity {
+        CONTEXT(Entity)
     public:
-        Entity(EntityManager* manager);
         virtual void Update(float deltaTime);
         virtual void Render();
         virtual void Destroy();
@@ -49,11 +48,9 @@ namespace Zeta2D {
         string name_;
 
     private:
-        App* app_;
         vector<Component*> components_;
         map<const type_info*, Component*> typeMap_;
-        EntityManager* manager_;
-        bool active_;
+        bool active_ = true;
 
         friend class EntityManager;
     };
