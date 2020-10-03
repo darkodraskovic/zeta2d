@@ -12,7 +12,8 @@ namespace Zeta2D {
     class Entity;
 
     class EntityManager : public Manager {
-        CONTEXT(EntityManager)
+        OBJECT(EntityManager, Manager)
+        
     public:
         void Update(float deltaTime);
         void Render();

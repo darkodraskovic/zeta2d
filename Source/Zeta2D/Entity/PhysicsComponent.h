@@ -9,6 +9,7 @@ using namespace glm;
 namespace Zeta2D {
 
     class PhysicsComponent : public Component {
+        OBJECT(PhysicsComponent, Component)
     public:
         virtual void Update(float deltaTime) {
             auto tc = owner->GetComponent<TransformComponent>();

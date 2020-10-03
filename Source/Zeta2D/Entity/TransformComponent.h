@@ -11,13 +11,12 @@ using namespace glm;
 namespace Zeta2D {
 
     class TransformComponent : public Component {
+        OBJECT(TransformComponent, Component)
     public:
         vec2 position_;
         float rotation_ = 0;
         vec2 scale_ = {1, 1};
         ivec2 size_ = {32, 32};
-
-    private:
     };
 
 }  // Zeta2D

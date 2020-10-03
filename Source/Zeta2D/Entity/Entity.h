@@ -9,14 +9,17 @@
 #include <SDL2/SDL.h>
 
 #include "../Application/App.h"
+#include "../Application/Object.h"
 #include "EntityManager.h"
 
 using namespace std;
 
 namespace Zeta2D {
     class Component;
-    class Entity {
-        CONTEXT(Entity)
+    
+    class Entity :public Object {
+        OBJECT(Entity, Object)
+        
     public:
         virtual void Update(float deltaTime);
         virtual void Render();
@@ -26,8 +29,8 @@ namespace Zeta2D {
         App* GetApp();
 
         template<typename T, typename... TArgs>
-        T* AddComponent(TArgs&&... args) {
-            T* component(new T(std::forward<TArgs>(args)...));
+        T* AddComponent() {
+            T* component(new T(this->app_));
             component->owner = this;
             components_.push_back(component);
             component->Init();

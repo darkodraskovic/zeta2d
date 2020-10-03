@@ -12,7 +12,7 @@ using namespace std;
 namespace Zeta2D {
 
     class AssetManager : public Manager {
-        CONTEXT(AssetManager)
+        OBJECT(AssetManager, Manager)
     public:
         void Clear();
         void AddTexture(string id, const char* fileName);

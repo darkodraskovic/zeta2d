@@ -16,11 +16,8 @@ namespace Zeta2D {
 
     class SpriteComponent : public Component
     {
+        OBJECT(SpriteComponent, Component)
     public:
-        SpriteComponent() {
-            
-        };
-        
         void Init() override {
             transform_ = owner->GetComponent<TransformComponent>();
             srcRect_.x = 0;
@@ -42,7 +39,7 @@ namespace Zeta2D {
         };
 
         void SetTexture(const string& id) {
-            texture_ = owner->GetManager<AssetManager>()->GetTexture(id);
+            texture_ = GetManager<AssetManager>()->GetTexture(id);
         }
 
         SDL_RendererFlip spriteFlip = SDL_FLIP_NONE;

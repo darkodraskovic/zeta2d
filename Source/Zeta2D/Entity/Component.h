@@ -2,11 +2,13 @@
 #define COMPONENT_H
 
 #include <SDL2/SDL.h>
+#include "../Application/Object.h"
 #include "Entity.h"
 
 namespace Zeta2D {
 
-    class Component {
+    class Component : public Object {
+        OBJECT(Component, Object)
     public:
         virtual void Init() {};
         virtual void Update(float deltaTime) {};

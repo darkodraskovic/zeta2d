@@ -1,9 +1,13 @@
 #ifndef MANAGER_H
 #define MANAGER_H
 
-namespace Zeta2D {
+#include "App.h"
+#include "Object.h"
 
-    class Manager {
+namespace Zeta2D  {
+    
+    class Manager : public Object {
+        OBJECT(Manager, Object)
     };
     
 }  // Zeta2D
