@@ -5,27 +5,19 @@
 #include "Consts.h"
 #include "App.h"
 #include "Game.h"
-#include "../Entity/Entity.h"
 #include "../Asset/AssetManager.h"
+#include "../Entity/Entity.h"
+#include "../Entity/EntityManager.h"
 
 using namespace glm;
 using namespace Zeta2D;
 
 SDL_Renderer *App::renderer_ = nullptr;
-AssetManager *App::assetManager_ = new AssetManager();
 
-App::App(Game* game) : game_(game){
-    game_->app_ = this;
-    running_ = false;
-}
 
 App::~App() {}
 
 bool App::GetRunning() const { return running_; }
-
-EntityManager& App::GetManager() {
-    return entityManager_;
-}
 
 void App::Run() {
     while (GetRunning()) {
@@ -35,7 +27,7 @@ void App::Run() {
     }
 }
 
-void App::Init(int width, int height) {
+void App::Init(Game* game, int width, int height) {
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
         std::cerr << "ERR init SDL" << std::endl;
         return;
@@ -55,7 +47,11 @@ void App::Init(int width, int height) {
 
     running_ = true;
 
-    game_->Init();
+    assetManager_ = AddManager<AssetManager>();
+    entityManager_ = AddManager<EntityManager>();
+
+    game_ = game;
+    game_->Init(this);
 
     return;
 }
@@ -89,7 +85,7 @@ void App::Update() {
     deltaTime = deltaTime < DELTA_TIME_MAX ? deltaTime : DELTA_TIME_MAX;
 
     game_->Update(deltaTime);
-    entityManager_.Update(deltaTime);
+    entityManager_->Update(deltaTime);
 }
 
 void App::Render() {
@@ -97,7 +93,7 @@ void App::Render() {
     SDL_RenderClear(renderer_);
 
     game_->Render();
-    entityManager_.Render();
+    entityManager_->Render();
 
     SDL_RenderPresent(renderer_);
 }

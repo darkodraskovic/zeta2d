@@ -17,25 +17,38 @@ using namespace Zeta2D;
 
 class MyGame : public Game {
 public:
-    virtual void Init() override {
-        string textureFilePath = "../assets/images/tank-big-right.png";
-        App::assetManager_->AddTexture("tank-big-right", textureFilePath.c_str());
-
-        for (int i = 0; i < 10; ++i)
+    virtual void Init(App* app) override {
+        Game::Init(app);
+        
+        string prefix = "../assets/images/";
+        
+        app_->GetManager<AssetManager>()->AddTexture("tank", (prefix + "tank-big-right.png").c_str());
+        app_->GetManager<AssetManager>()->AddTexture("chopper", (prefix + "chopper-spritesheet.png").c_str());
+        app_->GetManager<AssetManager>()->GetTexture("tank");
+        for (int i = 0; i < 50; ++i)
         {
-            Entity& e = GetApp().GetManager().AddEntity("tank");
-            TransformComponent& tc = e.AddComponent<TransformComponent>();
-            tc.size_ = {64, 64};
-            tc.position_ = linearRand(vec2{0,0}, vec2{WINDOW_WIDTH, WINDOW_HEIGHT});
-            PhysicsComponent& pc = e.AddComponent<PhysicsComponent>();
-            pc.velocity_ = linearRand(vec2{-50,-50}, vec2{50, 50});
-            pc.aVelocity_ = linearRand(-120, 120);
-            SpriteComponent& sc = e.AddComponent<SpriteComponent>("tank-big-right");
+            vec2 pos = linearRand(vec2{0,0}, vec2{WINDOW_WIDTH, WINDOW_HEIGHT});
+            float spd = 100;
+            vec2 vel = linearRand(vec2{-spd,-spd}, vec2{spd, spd});
+            CreateTank(pos, vel, linearRand(-360, 360));
         }
+        
     }
 
     virtual void Update(float deltaTime) override {
     };
+
+    void CreateTank(const vec2& pos, const vec2& vel, float aVel) {
+
+        Entity* e = app_->GetManager<EntityManager>()->AddEntity("tank");
+        TransformComponent* tc = e->AddComponent<TransformComponent>();
+        tc->position_ = pos;
+        PhysicsComponent* pc = e->AddComponent<PhysicsComponent>();
+        pc->velocity_ = vel;
+        pc->aVelocity_ = aVel;
+        SpriteComponent* sc = e->AddComponent<SpriteComponent>();
+        sc->SetTexture("tank");
+    }
 };
 
 #endif /* MY_GAME_H */

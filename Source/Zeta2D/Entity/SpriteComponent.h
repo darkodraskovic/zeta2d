@@ -17,9 +17,10 @@ namespace Zeta2D {
     class SpriteComponent : public Component
     {
     public:
-        SpriteComponent(const std::string id) {
-            texture_ = App::assetManager_->GetTexture(id);
+        SpriteComponent() {
+            
         };
+        
         void Init() override {
             transform_ = owner->GetComponent<TransformComponent>();
             srcRect_.x = 0;
@@ -29,7 +30,6 @@ namespace Zeta2D {
         }
 
         virtual void Update(float deltaTime) override {
-            // transform_->rotation_ += 0.1;
         };
 
         virtual void Render() override {
@@ -40,6 +40,10 @@ namespace Zeta2D {
             Texture::Draw(texture_, &srcRect_, &dstRect_,
                           transform_->rotation_, spriteFlip);
         };
+
+        void SetTexture(const string& id) {
+            texture_ = owner->GetApp()->GetManager<AssetManager>()->GetTexture(id);
+        }
 
         SDL_RendererFlip spriteFlip = SDL_FLIP_NONE;
 

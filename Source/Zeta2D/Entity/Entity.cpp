@@ -24,6 +24,10 @@ bool Entity::GetActive() const {
     return active_;
 }
 
+App* Entity::GetApp() {
+    return app_;
+}
+
 vector<Component*>& Entity::GetComponents() {
     return components_;
 }

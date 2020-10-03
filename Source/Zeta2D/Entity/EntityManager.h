@@ -5,15 +5,17 @@
 #include <vector>
 #include <SDL2/SDL.h>
 
+#include "../Application/Manager.h"
+
 namespace Zeta2D {
     class Entity;
 
-    class EntityManager {
+    class EntityManager : public Manager {
     public:
         void Update(float deltaTime);
         void Render();
 
-        Entity& AddEntity(std::string name);
+        Entity* AddEntity(std::string name);
         std::vector<Entity*>& GetEntities();
         void Clear();
 

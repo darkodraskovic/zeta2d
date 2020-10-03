@@ -6,10 +6,9 @@
 using namespace Zeta2D;
 
 int main(int argc, char *argv[]){
-    MyGame* game = new MyGame();
-    App* app = new App(game);
+    App* app = new App();
 
-    app->Init(WINDOW_WIDTH, WINDOW_HEIGHT);
+    app->Init(new MyGame(), WINDOW_WIDTH, WINDOW_HEIGHT);
     app->Run();
     app->Destroy();
 

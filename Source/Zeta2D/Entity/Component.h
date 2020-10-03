@@ -12,6 +12,8 @@ namespace Zeta2D {
         virtual void Update(float deltaTime) {};
         virtual void Render() {};
         virtual void Destroy() {}
+
+    protected:
         Entity* owner;
 
     private:

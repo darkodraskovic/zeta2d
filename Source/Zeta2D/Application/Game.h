@@ -8,14 +8,15 @@ namespace Zeta2D {
 
     class Game {
     public:
-        virtual void Init() {};
+        virtual void Init(App* app) {
+            app_ = app;
+        };
         virtual void Input(const SDL_Event* event) {}
         virtual void Update(float deltaTime) {};
         virtual void Render() {}
         virtual void Destroy() {}
 
-        App& GetApp() { return *app_;}
-    private:
+    protected:
         App* app_;
         friend class App;
     };
