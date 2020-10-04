@@ -11,16 +11,18 @@
 #include "../Application/App.h"
 #include "../Application/Object.h"
 #include "EntityManager.h"
+#include "TransformComponent.h"
 
 using namespace std;
 
 namespace Zeta2D {
-    class Component;
+    // class Component;
     
-    class Entity :public Object {
-        OBJECT(Entity, Object)
-        
+    class Entity :public Object {        
     public:
+        Entity(App* app) : Object(app) {
+            transform_ = AddComponent<TransformComponent>();
+        };
         virtual void Update(float deltaTime);
         virtual void Render();
         virtual void Destroy();
@@ -49,6 +51,7 @@ namespace Zeta2D {
         };
 
         string name_;
+        TransformComponent* transform_;
 
     private:
         vector<Component*> components_;

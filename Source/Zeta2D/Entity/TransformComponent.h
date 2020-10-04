@@ -3,16 +3,16 @@
 
 #include <SDL2/SDL_render.h>
 #include <glm/glm.hpp>
-#include "../Application/App.h"
 #include "Component.h"
 
 using namespace glm;
 
 namespace Zeta2D {
-
+    class Entity;
+    
     class TransformComponent : public Component {
-        OBJECT(TransformComponent, Component)
     public:
+        TransformComponent(App* app) : Component(app) {};
         vec2 position_;
         float rotation_ = 0;
         vec2 scale_ = {1, 1};

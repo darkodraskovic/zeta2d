@@ -2,18 +2,16 @@
 #define PHYSICS_COMPONENT_H
 
 #include "Component.h"
-#include "TransformComponent.h"
+#include "Entity.h"
 
 using namespace glm;
 
 namespace Zeta2D {
 
     class PhysicsComponent : public Component {
-        OBJECT(PhysicsComponent, Component)
     public:
+        PhysicsComponent(App* app) : Component(app) {};
         virtual void Update(float deltaTime) {
-            auto tc = owner->GetComponent<TransformComponent>();
-
             // linear
             ApplyForce(gravity_);
             Drag();
@@ -25,7 +23,7 @@ namespace Zeta2D {
                 velocity_ = clamp(velocity_, -maxVelocity_, maxVelocity_);
             }
             
-            tc->position_ += velocity_ * deltaTime;
+            owner->transform_->position_ += velocity_ * deltaTime;
             acceleration_ *= 0.f;
 
             // angular
@@ -38,7 +36,7 @@ namespace Zeta2D {
                 aVelocity_ = clamp(aVelocity_, -maxAVelocity_, maxAVelocity_);
             }
 
-            tc->rotation_ += aVelocity_ * deltaTime;
+            owner->transform_->rotation_ += aVelocity_ * deltaTime;
             aAcceleration_ *= 0.f;
         };
 

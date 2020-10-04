@@ -12,9 +12,6 @@
 using namespace glm;
 using namespace Zeta2D;
 
-SDL_Renderer *App::renderer_ = nullptr;
-
-
 App::~App() {}
 
 bool App::GetRunning() const { return running_; }

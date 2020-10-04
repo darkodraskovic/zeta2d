@@ -3,14 +3,24 @@
 
 #include <SDL2/SDL_rect.h>
 #include <SDL2/SDL_render.h>
+#include <glm/glm.hpp>
+#include <string>
+#include "../Application/Object.h"
 
 namespace Zeta2D {
-
-    class Texture {
+    
+    class Texture : public Object {
     public:
-        static void Draw(
-            SDL_Texture* texture, SDL_Rect* src, SDL_Rect* dst,
+        Texture(App* app);
+        void Draw(SDL_Rect* src, SDL_Rect* dst,
             float rotation, const SDL_RendererFlip flip);
+        const glm::ivec2& GetSize();
+        
+    private:
+        void SetSDLTexture(SDL_Texture* texture);
+        SDL_Texture* texture_;
+        glm::ivec2 size_;
+        friend class AssetManager;
     };
 
 }  // Zeta2D

@@ -3,13 +3,12 @@
 
 #include <SDL2/SDL.h>
 #include "../Application/Object.h"
-#include "Entity.h"
 
 namespace Zeta2D {
-
+    class Entity;
     class Component : public Object {
-        OBJECT(Component, Object)
     public:
+        Component(App* app) : Object(app) {};
         virtual void Init() {};
         virtual void Update(float deltaTime) {};
         virtual void Render() {};

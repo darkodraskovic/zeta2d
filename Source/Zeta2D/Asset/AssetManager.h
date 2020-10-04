@@ -6,21 +6,22 @@
 
 #include "../Application/App.h"
 #include "../Application/Manager.h"
+#include "../Graphics/Texture.h"
 
 using namespace std;
 
 namespace Zeta2D {
 
     class AssetManager : public Manager {
-        OBJECT(AssetManager, Manager)
     public:
+        AssetManager(App* app) : Manager(app) {};
         void Clear();
         void AddTexture(string id, const char* fileName);
-        SDL_Texture* GetTexture(string id);
+        Texture* GetTexture(string id);
 
     private:
-        SDL_Texture* LoadTexture(const char* fileName);
-        map<string, SDL_Texture*> textures_;
+        Texture* LoadTexture(const char* fileName);
+        map<string, Texture*> textures_;
     };
 
 }  // Zeta2D

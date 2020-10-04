@@ -42,9 +42,9 @@ namespace Zeta2D {
             return static_cast<T*>(typeMap_[&typeid(T)]);
         }
         
-        static SDL_Renderer* renderer_;
         
     private:
+        SDL_Renderer* renderer_;
         TypeMap typeMap_;
         AssetManager* assetManager_;
         EntityManager* entityManager_;
@@ -53,6 +53,8 @@ namespace Zeta2D {
         SDL_Window* window_;
         Game* game_;
         int prevFrameTime;
+        
+        friend class Object;
     };
     
 }  // Zeta2D

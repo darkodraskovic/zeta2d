@@ -11,15 +11,16 @@
 #include "../Graphics/Texture.h"
 #include "Component.h"
 #include "TransformComponent.h"
+#include "Entity.h"
 
 namespace Zeta2D {
 
     class SpriteComponent : public Component
     {
-        OBJECT(SpriteComponent, Component)
     public:
+        SpriteComponent(App* app) : Component(app) {};
         void Init() override {
-            transform_ = owner->GetComponent<TransformComponent>();
+            TransformComponent* transform_ = owner->transform_;
             srcRect_.x = 0;
             srcRect_.y = 0;
             srcRect_.w = transform_->size_.x;
@@ -30,23 +31,27 @@ namespace Zeta2D {
         };
 
         virtual void Render() override {
+            TransformComponent* transform_ = owner->transform_;
             dstRect_.x = (int)transform_->position_.x;
             dstRect_.y = (int)transform_->position_.y;
             dstRect_.w = transform_->size_.x * transform_->scale_.x;
             dstRect_.h = transform_->size_.y * transform_->scale_.y;
-            Texture::Draw(texture_, &srcRect_, &dstRect_,
-                          transform_->rotation_, spriteFlip);
+            Draw();
         };
 
-        void SetTexture(const string& id) {
+        virtual void Draw() {
+            texture_->Draw(&srcRect_, &dstRect_, owner->transform_->rotation_, spriteFlip);
+        }
+
+        virtual void SetTexture(const string& id) {
             texture_ = GetManager<AssetManager>()->GetTexture(id);
         }
 
         SDL_RendererFlip spriteFlip = SDL_FLIP_NONE;
-
-    private:
-        TransformComponent* transform_;
-        SDL_Texture* texture_;
+        bool fixed_ = false;
+        
+    protected:
+        Texture* texture_;
         SDL_Rect srcRect_;
         SDL_Rect dstRect_;
     };
