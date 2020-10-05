@@ -6,23 +6,29 @@
 #include <vector>
 #include <string>
 #include <map>
+#include <glm/glm.hpp>
 #include <SDL2/SDL.h>
 
 #include "../Application/App.h"
 #include "../Application/Object.h"
+#include "Component.h"
 #include "EntityManager.h"
-#include "TransformComponent.h"
 
 using namespace std;
+using namespace glm;
 
 namespace Zeta2D {
     // class Component;
+
+    struct Transform {
+        vec2 position_ = {0, 0};
+        float rotation_ = 0;
+        vec2 scale_ = {1, 1};
+    };
     
     class Entity :public Object {        
     public:
-        Entity(App* app) : Object(app) {
-            transform_ = AddComponent<TransformComponent>();
-        };
+        Entity(App* app) : Object(app) {}
         virtual void Update(float deltaTime);
         virtual void Render();
         virtual void Destroy();
@@ -51,7 +57,7 @@ namespace Zeta2D {
         };
 
         string name_;
-        TransformComponent* transform_;
+        Transform transform_;
 
     private:
         vector<Component*> components_;

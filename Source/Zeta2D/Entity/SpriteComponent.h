@@ -1,6 +1,7 @@
 #ifndef SPRITECOMPONENT_H
 #define SPRITECOMPONENT_H
 
+#include <glm/fwd.hpp>
 #include <iostream>
 
 #include <SDL2/SDL.h>
@@ -10,7 +11,6 @@
 #include "../Asset/AssetManager.h"
 #include "../Graphics/Texture.h"
 #include "Component.h"
-#include "TransformComponent.h"
 #include "Entity.h"
 
 namespace Zeta2D {
@@ -19,28 +19,18 @@ namespace Zeta2D {
     {
     public:
         SpriteComponent(App* app) : Component(app) {};
-        void Init() override {
-            TransformComponent* transform_ = owner->transform_;
-            srcRect_.x = 0;
-            srcRect_.y = 0;
-            srcRect_.w = transform_->size_.x;
-            srcRect_.h = transform_->size_.y;
-        }
-
-        virtual void Update(float deltaTime) override {
-        };
 
         virtual void Render() override {
-            TransformComponent* transform_ = owner->transform_;
-            dstRect_.x = (int)transform_->position_.x;
-            dstRect_.y = (int)transform_->position_.y;
-            dstRect_.w = transform_->size_.x * transform_->scale_.x;
-            dstRect_.h = transform_->size_.y * transform_->scale_.y;
+            Transform& transform = owner->transform_;
+            dstRect_.x = (int)transform.position_.x;
+            dstRect_.y = (int)transform.position_.y;
+            dstRect_.w = srcRect_.w * transform.scale_.x;
+            dstRect_.h = srcRect_.h * transform.scale_.y;
             Draw();
         };
 
         virtual void Draw() {
-            texture_->Draw(&srcRect_, &dstRect_, owner->transform_->rotation_, spriteFlip);
+            texture_->Draw(&srcRect_, &dstRect_, owner->transform_.rotation_, spriteFlip);
         }
 
         virtual void SetTexture(const string& id) {
@@ -49,10 +39,10 @@ namespace Zeta2D {
 
         SDL_RendererFlip spriteFlip = SDL_FLIP_NONE;
         bool fixed_ = false;
+        SDL_Rect srcRect_ = {0, 0, 32, 32};
         
     protected:
         Texture* texture_;
-        SDL_Rect srcRect_;
         SDL_Rect dstRect_;
     };
 

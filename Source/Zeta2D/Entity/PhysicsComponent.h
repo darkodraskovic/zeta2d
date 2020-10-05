@@ -23,7 +23,7 @@ namespace Zeta2D {
                 velocity_ = clamp(velocity_, -maxVelocity_, maxVelocity_);
             }
             
-            owner->transform_->position_ += velocity_ * deltaTime;
+            owner->transform_.position_ += velocity_ * deltaTime;
             acceleration_ *= 0.f;
 
             // angular
@@ -36,7 +36,7 @@ namespace Zeta2D {
                 aVelocity_ = clamp(aVelocity_, -maxAVelocity_, maxAVelocity_);
             }
 
-            owner->transform_->rotation_ += aVelocity_ * deltaTime;
+            owner->transform_.rotation_ += aVelocity_ * deltaTime;
             aAcceleration_ *= 0.f;
         };
 

@@ -42,6 +42,7 @@ namespace Zeta2D {
             srcRect_.y = (anim[index_] / numFramesX_) * srcRect_.h;
             texture_->Draw(&srcRect_, dstRect, rotation, flip);
         };
+        
         unsigned int speed_ = 1000 / 24;
         unsigned int index_ = 0;
 

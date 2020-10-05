@@ -28,7 +28,7 @@ namespace Zeta2D {
         };
 
         virtual void Draw() override {
-            animation_->Play(currentAnim_, &dstRect_, owner->transform_->rotation_, spriteFlip);
+            animation_->Play(currentAnim_, &dstRect_, owner->transform_.rotation_, spriteFlip);
         };
         
         Animation* animation_;
