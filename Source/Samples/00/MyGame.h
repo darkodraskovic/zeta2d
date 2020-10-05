@@ -10,7 +10,7 @@
 #include "Zeta2D/Entity/Entity.h"
 #include "Zeta2D/Entity/SpriteComponent.h"
 #include "Zeta2D/Entity/PhysicsComponent.h"
-#include "Zeta2D/Entity/AnimatedComponent.h"
+#include "Zeta2D/Entity/AnimationComponent.h"
 
 using namespace glm;
 using namespace Zeta2D;
@@ -46,15 +46,15 @@ public:
         pc->velocity_ = vel;
         // pc->aVelocity_ = aVel;
         
-        SpriteComponent* sc = e->AddComponent<SpriteComponent>();
-        sc->SetTexture("chopper");
+        // SpriteComponent* sc = e->AddComponent<SpriteComponent>();
+        // sc->SetTexture("tank");
         
-        // AnimatedComponent* ac = e->AddComponent<AnimatedComponent>();
-        // ac->animation_->SetTexture("chopper", 32, 32);
-        // ac->animation_->AddAnimation("down", vector<unsigned int>{0, 1, 6, 7});
-        // ac->animation_->speed_ = 500;
-        // ac->currentAnim_ = "down";
-        // ac->animation_->index_ = linearRand(0, 6);
+        AnimationComponent* ac = e->AddComponent<AnimationComponent>();
+        ac->SetTexture("chopper", 32, 32);
+        ac->AddAnimation("down", vector<unsigned int>{0, 1, 6, 7});
+        ac->speed_ = 500;
+        ac->currentAnim_ = "down";
+        ac->index_ = linearRand(0, 4);
     }
 };
 

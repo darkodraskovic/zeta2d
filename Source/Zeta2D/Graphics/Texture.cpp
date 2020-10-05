@@ -10,7 +10,7 @@ using namespace Zeta2D;
 
 Texture::Texture(App* app) : Object(app) {}
 
-void Texture::Draw(SDL_Rect *src, SDL_Rect *dst, float rotation, const SDL_RendererFlip flip) {
+void Texture::Render(SDL_Rect *src, SDL_Rect *dst, float rotation, const SDL_RendererFlip flip) {
     SDL_RenderCopyEx(GetRenderer(), texture_, src, dst, rotation, NULL, flip);
 }
 

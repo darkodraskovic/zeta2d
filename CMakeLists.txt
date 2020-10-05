@@ -12,6 +12,7 @@ add_library(zeta2d
   "${ZETA2D_SRC}/Asset/AssetManager.cpp"
   "${ZETA2D_SRC}/Entity/Entity.cpp"
   "${ZETA2D_SRC}/Entity/EntityManager.cpp"
+  "${ZETA2D_SRC}/Entity/AnimationComponent.cpp"
   "${ZETA2D_SRC}/Graphics/Texture.cpp"
   )
 target_include_directories(zeta2d PUBLIC Source)

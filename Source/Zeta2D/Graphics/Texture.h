@@ -12,7 +12,7 @@ namespace Zeta2D {
     class Texture : public Object {
     public:
         Texture(App* app);
-        void Draw(SDL_Rect* src, SDL_Rect* dst,
+        void Render(SDL_Rect* src, SDL_Rect* dst,
             float rotation, const SDL_RendererFlip flip);
         const glm::ivec2& GetSize();
         
