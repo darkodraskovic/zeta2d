@@ -15,8 +15,10 @@ namespace Zeta2D {
 
         virtual void SetTexture(const string& id) {
             texture_ = app_->GetManager<AssetManager>()->GetTexture(id);
+            srcRect_.w = texture_->GetSize().x;
+            srcRect_.h = texture_->GetSize().y;
         }
-        
+
         virtual void Render() override {
             Transform& transform = owner->transform_;
             dstRect_.x = (int)transform.position_.x;
@@ -25,7 +27,7 @@ namespace Zeta2D {
             dstRect_.h = srcRect_.h * transform.scale_.y;
             texture_->Render(&srcRect_, &dstRect_, transform.rotation_, flip_);
         }
-        
+
         SDL_RendererFlip flip_ = SDL_FLIP_NONE;
         bool fixed_ = false;
         SDL_Rect srcRect_ = {0, 0, 32, 32};

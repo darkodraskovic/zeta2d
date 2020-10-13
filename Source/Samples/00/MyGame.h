@@ -24,7 +24,13 @@ public:
         
         app_->GetManager<AssetManager>()->AddTexture("tank", (prefix + "tank-big-right.png").c_str());
         app_->GetManager<AssetManager>()->AddTexture("chopper", (prefix + "chopper-spritesheet.png").c_str());
-        app_->GetManager<AssetManager>()->GetTexture("tank");
+        app_->GetManager<AssetManager>()->AddTexture("radar", (prefix + "radar.png").c_str());
+
+        Entity* e = app_->GetManager<EntityManager>()->AddEntity("radar");
+        e->transform_.position_ = {200, 200};
+        AnimationComponent* ac = e->AddComponent<AnimationComponent>();
+        ac->SetTexture("radar", 64, 64);
+        
         for (int i = 0; i < 50; ++i)
         {
             vec2 pos = linearRand(vec2{0,0}, vec2{WINDOW_WIDTH, WINDOW_HEIGHT});
@@ -32,7 +38,7 @@ public:
             vec2 vel = linearRand(vec2{-spd,-spd}, vec2{spd, spd});
             CreateTank(pos, vel, linearRand(-360, 360));
         }
-        
+
     }
 
     virtual void Update(float deltaTime) override {
